@@ -1,0 +1,39 @@
+.main-head {
+  text-align: center;
+  color: #fff;
+}
+
+.job-card {
+  background: #fff;
+  max-width: 600px;
+  width: 100%;
+  margin: 10px auto;
+  display: block;
+  box-shadow: 1px 1px 10px rgba(0,0,0,0.6);
+  padding: 10px;
+
+  .description {
+    max-height: 50px;
+  }
+}
+
+.main-form {
+  display: flex;
+  justify-content: center;
+
+  input {
+    max-width: 300px;
+    width: 100%;
+    background: #fff;
+    height: 35px;
+  }
+  button {
+    color: #fff;
+    padding: 0 10px;
+    height: 35px;
+    line-height: 30px;
+    border-radius: 10px;
+    background: #198754;
+    margin-left: 5px;
+  }
+}
