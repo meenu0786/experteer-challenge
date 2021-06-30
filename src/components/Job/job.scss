@@ -1,0 +1,25 @@
+.job-detail {
+  background: #fff;
+  max-width: 600px;
+  width: 100%;
+  margin: 10px auto;
+  display: block;
+  box-shadow: 1px 1px 10px rgba(0,0,0,0.6);
+  padding: 10px;
+
+  .applied {
+    float: right;
+    background: gray;
+    padding: 8px;
+  }
+
+  .apply-btn {
+    background: #198754;
+  }
+
+  .apply-top-btn {
+    float: right;
+    background: #198754;
+    padding: 5px;
+  }
+}
