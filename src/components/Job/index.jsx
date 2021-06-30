@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import './job.scss';
+import pinImg from '../../images/pin.png';
 
 const Job = (props) => {
   const location = useLocation();
@@ -26,10 +27,10 @@ const Job = (props) => {
 
   return (
     <div className='job-detail'>
-      {isJobApplied ? <span className='applied'>Applied</span> :<button className='apply-top-btn' onClick={applyForJob}>Apply</button> }
-      <div>{job?.Title}</div>
+      {isJobApplied ? <span className='applied'>Applied</span> :<button className='apply-btn apply-top-btn' onClick={applyForJob}>Apply</button> }
+      <div><h2>{job?.Title}</h2></div>
       <div>{job?.Company}</div>
-      <div>{job?.Location}</div>
+      <div><img src={pinImg} alt='pin' width='12' height='12' /> {job?.Location}</div>
       <div>{job?.Published}</div>
       <div className='description' dangerouslySetInnerHTML={{ __html: job?.Description }} />
       {!isJobApplied && <button className='apply-btn' onClick={applyForJob}>Apply</button>}

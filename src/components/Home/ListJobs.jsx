@@ -1,6 +1,7 @@
 import React from 'react';
 import './home.scss';
 import { useHistory } from "react-router-dom";
+import pinImg from '../../images/pin.png';
 
 const ListJobs = (props) => {
   const history = useHistory();
@@ -18,7 +19,8 @@ const ListJobs = (props) => {
           <h4>{job.Title}</h4>
           <div>{job.Company}</div>
           <div className='description' dangerouslySetInnerHTML={{ __html: job.Description }} />
-          <div>{job.Location}</div>
+          <div><img src={pinImg} alt='pin' width='12' height='12' /> {job.Location}</div>
+          <div>{job.Published}</div>
         </div>
       )})}
     </div>

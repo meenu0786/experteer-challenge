@@ -1,21 +1,33 @@
+@import '../../styles/variables.scss';
+
 .main-head {
   text-align: center;
-  color: #fff;
+  color: $white-color;
 }
 
 .job-card {
   background: #fff;
   max-width: 600px;
   width: 100%;
-  margin: 10px auto;
+  margin: 15px auto;
   display: block;
   box-shadow: 1px 1px 10px rgba(0,0,0,0.6);
-  padding: 10px;
+  padding: 15px;
   cursor: pointer;
+  color: #666;
+  font-size: $font-size-14;
+
+  h4{
+    margin: 0 0 8px;
+    font-size: $font-size-20;
+    color: $black-color;
+  }
 
   .description {
-    max-height: 50px;
+    max-height: 54px;
     overflow: hidden;
+    font-size: $font-size-16;
+    margin: 15px 0;
   }
 }
 
@@ -26,16 +38,26 @@
   input {
     max-width: 300px;
     width: 100%;
-    background: #fff;
+    background: $white-color;
     height: 35px;
+    outline: none;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.4);
+    margin: 0 10px;
+    padding: 5px 10px;
+    box-sizing: border-box;
+    border: none;
   }
   button {
-    color: #fff;
-    padding: 0 10px;
-    height: 35px;
+    color: $white-color;
+    padding: 0 15px;
+    height: 37px;
     line-height: 30px;
-    border-radius: 10px;
-    background: #198754;
+    border-radius: 6px;
+    background: $green-color;
     margin-left: 5px;
+    outline: none;
+    border: none;
+    font-size: $font-size-16;
+    cursor: pointer;
   }
 }

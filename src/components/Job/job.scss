@@ -1,25 +1,58 @@
+@import '../../styles/variables.scss';
+
 .job-detail {
-  background: #fff;
+  background: $white-color;
   max-width: 600px;
   width: 100%;
   margin: 10px auto;
   display: block;
   box-shadow: 1px 1px 10px rgba(0,0,0,0.6);
-  padding: 10px;
+  padding: 15px;
+  color: #666;
+  font-size: 14px;
+
+  h2 {
+    margin-bottom: 8px;
+    font-size: 20px;
+    color: $black-color;
+  }
+
 
   .applied {
     float: right;
-    background: gray;
+    background: none;
+    border: 2px solid $green-color;
+    color: $green-color;
+    border-radius: 5px;
     padding: 8px;
+    margin-top: 20px;
+  }
+
+  .description {
+    font-size: 16px;
+    margin: 15px 0;
   }
 
   .apply-btn {
-    background: #198754;
+    color: #fff;
+    padding: 0 20px;
+    height: 35px;
+    line-height: 30px;
+    border-radius: 2px;
+    background: $green-color;
+    margin-left: 5px;
+    outline: none;
+    border: none;
+    max-width: 100px;
+    width: 100%;
+    margin: 10px auto;
+    display: block;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
   }
 
   .apply-top-btn {
     float: right;
-    background: #198754;
-    padding: 5px;
   }
 }
