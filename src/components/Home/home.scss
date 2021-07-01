@@ -17,7 +17,7 @@
   color: #666;
   font-size: $font-size-14;
 
-  h4{
+  h4 {
     margin: 0 0 8px;
     font-size: $font-size-20;
     color: $black-color;
@@ -28,6 +28,15 @@
     overflow: hidden;
     font-size: $font-size-16;
     margin: 15px 0;
+  }
+
+  .applied {
+    border: 2px solid $green-color;
+    color: $green-color;
+    border-radius: 5px;
+    padding: 5px;
+    margin-top: 20px;
+    font-size: $font-size-16;
   }
 }
 

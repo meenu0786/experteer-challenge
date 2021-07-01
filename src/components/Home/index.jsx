@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import ListJobs from './ListJobs';
 import './home.scss';
 import Loader from "../Shared/Loader";
 import { getRequest, postRequest } from '../../api';
+import { useLocation, useHistory } from 'react-router-dom';
 
 const Home = () => {
   const initialValues = {
@@ -14,8 +15,22 @@ const Home = () => {
   const [searchData, setSearchData] = useState([]);
   const [poolTimer, setPoolTimer] = useState(1);
   const [isLoaderVisible, setIsLoaderVisible] = useState(false);
+  const [loaderText, setLoaderText] = useState(null);
+
+  const location = useLocation();
+  const history = useHistory();
 
   let timerCount = 0;
+  
+  useEffect(() => {
+
+    if (location.state) {
+      setSearchData(location.state.jobs);
+      const val = { location: 'Munich', jobTitle: location.state.jobTitle }
+      setValues(val);
+      history.replace();
+    }
+  }, [location, history]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -25,8 +40,11 @@ const Home = () => {
     });
   };
 
+  // Search query on jobsearcher api.
   const handleSearch = async () => {
     try {
+      setSearchData([]);
+      setLoaderText('Request is being processed and results will be available shortly.');
       setIsLoaderVisible(true);
       const response = await postRequest(`/search?query=${values.jobTitle}`);
       switch (response.status) {
@@ -37,22 +55,21 @@ const Home = () => {
           setSearchData(response.data);
           clearTimeout(poolTimer);
           setIsLoaderVisible(false);
+          setLoaderText(null);
           break;
         default:
           console.log('default case');
       }
     } catch(err) {
-
-    
-      }
+      console.log(err.message);
+    }
   }
 
   const checkResultStatus = async (uuid) => {
     try {
       let timer;
-      const resultStatus = await getRequest(`/status/${uuid}`); //await axios.get(`http://localhost:8080/status/${uuid}`);
-      console.log('poolTimer', poolTimer);
-      console.log(timerCount);
+      const resultStatus = await getRequest(`/status/${uuid}`);
+      setLoaderText('Your results will appear here...');
       if (poolTimer > 7) clearTimeout(poolTimer);
       switch (resultStatus.status) {
         case 200:
@@ -71,7 +88,7 @@ const Home = () => {
           clearTimeout(timer);
       }
     } catch(err) {
-
+      console.log(err.message);
     }
   }
   
@@ -83,12 +100,13 @@ const Home = () => {
           setSearchData(result.data);
           clearTimeout(timer);
           setIsLoaderVisible(false);
+          setLoaderText(null);
           break;
         default:
           console.log('default case'); 
       }
     } catch(err) {
-
+      console.log(err.message);
     }
   }
 
@@ -100,8 +118,8 @@ const Home = () => {
         <input type='text' placeholder='Find your dream job now' value={values.jobTitle} name="jobTitle" onChange={handleInputChange} />
         <button type="submit" onClick={handleSearch}> Search </button>
       </div>
-      { isLoaderVisible && <Loader text='Your results will appear here...' />}
-      { searchData.length > 0 && <ListJobs searchData={searchData} />}
+      { isLoaderVisible && <Loader text={loaderText} />}
+      { searchData.length > 0 && <ListJobs searchData={searchData} jobTitle={values.jobTitle} />}
     </div>
   )
 }
