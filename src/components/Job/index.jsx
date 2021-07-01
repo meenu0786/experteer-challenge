@@ -13,6 +13,8 @@ const Job = (props) => {
   
   const history = useHistory();
 
+  // Set current job in state.
+  // Manage to persist data on browser back button.
   useEffect(() => {
     console.log('location', location);
     const currentJob = location.state.job;
@@ -27,6 +29,8 @@ const Job = (props) => {
     })
   }, [location, history]);
 
+  //Implement apply job on clicking Apply button.
+  //Applied jobs are stored in local storage.
   const applyForJob = () => {
     let appliedJobs = JSON.parse(localStorage.getItem('appliedJobs')) || [];
     if (appliedJobs.indexOf(job?.Title) === -1) {

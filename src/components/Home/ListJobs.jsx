@@ -8,8 +8,9 @@ const ListJobs = (props) => {
   const history = useHistory();
   const appliedJobs = JSON.parse(localStorage.getItem('appliedJobs')) || [];
 
+  // handle job card click and navigate to individual job page.
   const navigateToJob = (job) => {
-    history.push(`jobs/${job.Title.replaceAll(' ', '-')}`, 
+    history.push(`jobs/${job.Title.replace(' ', '-')}`, 
       { job: job, jobs: props.searchData, jobTitle: props.jobTitle });
   }
 

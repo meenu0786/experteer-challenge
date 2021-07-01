@@ -23,7 +23,7 @@ const Home = () => {
   let timerCount = 0;
   
   useEffect(() => {
-
+    // Persist data on browser back button or back arrow from job page.
     if (location.state) {
       setSearchData(location.state.jobs);
       const val = { location: 'Munich', jobTitle: location.state.jobTitle }
@@ -41,6 +41,7 @@ const Home = () => {
   };
 
   // Search query on jobsearcher api.
+  // Perform different actions based on status code.
   const handleSearch = async () => {
     try {
       setSearchData([]);
@@ -65,6 +66,8 @@ const Home = () => {
     }
   }
 
+  // Check status of result (has been fetched or not) from jobsearcher api.
+  // If result is not fetched then perform poolinf to check result status.
   const checkResultStatus = async (uuid) => {
     try {
       let timer;
@@ -92,6 +95,7 @@ const Home = () => {
     }
   }
   
+  Fetch search result from jobsearcher api and set state data based on that.
   const fetchResult = async (uuid, timer) => {
     try {
       const result = await getRequest(`/result/${uuid}`); //await axios.get(`http://localhost:8080/result/${uuid}`);
