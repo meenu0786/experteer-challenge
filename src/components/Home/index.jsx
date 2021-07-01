@@ -95,7 +95,7 @@ const Home = () => {
     }
   }
   
-  Fetch search result from jobsearcher api and set state data based on that.
+  // Fetch search result from jobsearcher api and set state data based on that.
   const fetchResult = async (uuid, timer) => {
     try {
       const result = await getRequest(`/result/${uuid}`); //await axios.get(`http://localhost:8080/result/${uuid}`);
